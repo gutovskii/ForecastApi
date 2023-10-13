@@ -1,7 +1,6 @@
 import { MikroOrmModule } from '@mikro-orm/nestjs';
-import { HttpModule } from '@nestjs/axios';
 import { Module } from '@nestjs/common';
-import { ConfigModule, ConfigService } from '@nestjs/config';
+import { ConfigModule } from '@nestjs/config';
 import * as Joi from 'joi';
 import { getConfig } from './common/config';
 import { ForecastModule } from './forecast/forecast.module';
@@ -21,17 +20,6 @@ import { ForecastModule } from './forecast/forecast.module';
       }),
     }),
     MikroOrmModule.forRoot(),
-    HttpModule.registerAsync({
-      inject: [ConfigService],
-      useFactory: (configService: ConfigService) => {
-        return {
-          baseURL: configService.get('baseUrl'),
-          params: {
-            appid: configService.get('apiKey'),
-          },
-        };
-      },
-    }),
     ForecastModule,
   ],
 })

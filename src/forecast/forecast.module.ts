@@ -13,14 +13,12 @@ import { ForecastService } from './forecast.service';
     MikroOrmModule.forFeature([Forecast]),
     HttpModule.registerAsync({
       inject: [ConfigService],
-      useFactory: (configService: ConfigService) => {
-        return {
-          baseURL: 'https://api.openweathermap.org/data/3.0/onecall',
-          params: {
-            appid: configService.get('apiKey'),
-          },
-        };
-      },
+      useFactory: (configService: ConfigService) => ({
+        baseURL: configService.get('baseUrl'),
+        params: {
+          appid: configService.get('apiKey'),
+        },
+      }),
     }),
   ],
 })

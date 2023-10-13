@@ -1,7 +1,7 @@
 import { Options } from '@mikro-orm/core';
-import { config } from 'dotenv';
+import * as dotenv from 'dotenv';
 
-config();
+dotenv.config();
 
 const mikroOrmConfig: Options = {
   dbName: process.env.POSTGRES_DB,
