@@ -16,7 +16,7 @@ export const config = {
       port: +env.POSTGRES_PORT,
       username: env.POSTGRES_USER,
       password: env.POSTGRES_PASSWORD,
-      database: env.POSTGRES_DATABASE,
+      database: env.POSTGRES_DB,
     },
   },
 };
