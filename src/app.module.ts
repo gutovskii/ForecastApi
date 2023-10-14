@@ -12,6 +12,8 @@ import { ForecastModule } from './forecast/forecast.module';
       load: [getConfig],
       validationSchema: Joi.object({
         PORT: Joi.number().default(3000),
+        BASE_URL: Joi.string().required(),
+        API_KEY: Joi.string().required(),
         POSTGRES_HOST: Joi.string().required(),
         POSTGRES_PORT: Joi.string().required(),
         POSTGRES_USER: Joi.string().required(),
